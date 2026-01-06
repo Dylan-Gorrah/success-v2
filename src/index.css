@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default margins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  background: #FBF7F4;
+  color: #232323;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: #685D54;
+  color: #FBF7F4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E5DED2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A39382;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #685D54;
+}
+
+/* Shimmer animation for button */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced backdrop-filter support for better glass effect */
+@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)) {
+  .backdrop-glass {
+    backdrop-filter: blur(30px) saturate(180%) brightness(110%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%) brightness(110%);
+  }
+}
+
+/* Ensure backdrop-filter works across all browsers */
+nav {
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(30px) saturate(180%);
+}
+
+/* Better glass rendering */
+@media (prefers-reduced-motion: no-preference) {
+  nav {
+    will-change: backdrop-filter, background;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+  nav {
+    background: rgba(251, 247, 244, 0.95) !important;
+  }
+}
